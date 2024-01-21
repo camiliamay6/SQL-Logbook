@@ -1,0 +1,292 @@
+{
+    "type": "MySQLNotebook",
+    "version": "1.0",
+    "caption": "DB Notebook",
+    "content": "\\about\n/* Solved 'New Companies' problem */ \nSELECT \n    c.COMPANY_CODE,\n    c.FOUNDER,\n    COUNT(DISTINCT lm.LEAD_MANAGER_CODE),\n    COUNT(DISTINCT sm.SENIOR_MANAGER_CODE),\n    COUNT(DISTINCT m.MANAGER_CODE),\n    COUNT(DISTINCT e.employee_code)\nFROM\n    company as c\njoin lead_manager AS lm ON c.COMPANY_CODE = lm.company_code\njoin senior_manager as sm on lm.lead_manager_code = sm.lead_manager_code\njoin manager as m on m.senior_manager_code = sm.senior_manager_code\nJOIN employee as e on e.manager_code = m.manager_code\nGROUP BY c.COMPANY_CODE, c.FOUNDER\norder by c.company_code;\n/* 'Occupations' problem */\nSELECT \n    MAX(CASE WHEN OCCUPATION = 'Doctor' THEN NAME ELSE NULL END) AS ,\n    MAX(CASE WHEN OCCUPATION = 'Professor' THEN NAME ELSE NULL END),\n    MAX(CASE WHEN OCCUPATION = 'Singer' THEN NAME ELSE NULL END),\n    MAX(CASE WHEN OCCUPATION = 'Actor' THEN NAME ELSE NULL END)\nFROM\n    (\n        SELECT \n            *, \n            ROW_NUMBER()OVER(PARTITION BY OCCUPATION ORDER BY NAME) AS RN \n        FROM\n            OCCUPATIONS\n    ) AS new_tab\nGROUP BY RN;\n\n",
+    "options": {
+        "tabSize": 4,
+        "indentSize": 4,
+        "insertSpaces": true,
+        "defaultEOL": "LF",
+        "trimAutoWhitespace": true
+    },
+    "viewState": {
+        "cursorState": [
+            {
+                "inSelectionMode": true,
+                "selectionStart": {
+                    "lineNumber": 25,
+                    "column": 6
+                },
+                "position": {
+                    "lineNumber": 23,
+                    "column": 44
+                }
+            }
+        ],
+        "viewState": {
+            "scrollLeft": 0,
+            "firstPosition": {
+                "lineNumber": 18,
+                "column": 1
+            },
+            "firstPositionDeltaTop": 65
+        },
+        "contributionsState": {
+            "editor.contrib.folding": {},
+            "editor.contrib.wordHighlighter": false
+        }
+    },
+    "contexts": [
+        {
+            "state": {
+                "start": 1,
+                "end": 1,
+                "language": "mysql",
+                "currentHeight": 28,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 6
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 2,
+                "end": 17,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "8bafe17b-c3a5-41cb-f175-9dc147c2da52"
+                    ]
+                },
+                "currentHeight": 119,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 575
+                        },
+                        "contentStart": 38,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "777b999e-3497-493d-d97a-4889ab0374b2",
+                    "resultId": "8bafe17b-c3a5-41cb-f175-9dc147c2da52",
+                    "rows": [
+                        {
+                            "0": "C1",
+                            "1": "MONIKA",
+                            "2": 1,
+                            "3": 1,
+                            "4": 1,
+                            "5": 2
+                        },
+                        {
+                            "0": "C2",
+                            "1": "SAMANTHA",
+                            "2": 1,
+                            "3": 1,
+                            "4": 2,
+                            "5": 2
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "COMPANY_CODE",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17
+                            }
+                        },
+                        {
+                            "title": "FOUNDER",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17
+                            }
+                        },
+                        {
+                            "title": "COUNT(DISTINCT lm.LEAD_MANAGER_CODE)",
+                            "field": "2",
+                            "dataType": {
+                                "type": 4
+                            }
+                        },
+                        {
+                            "title": "COUNT(DISTINCT sm.SENIOR_MANAGER_CODE)",
+                            "field": "3",
+                            "dataType": {
+                                "type": 4
+                            }
+                        },
+                        {
+                            "title": "COUNT(DISTINCT m.MANAGER_CODE)",
+                            "field": "4",
+                            "dataType": {
+                                "type": 4
+                            }
+                        },
+                        {
+                            "title": "COUNT(DISTINCT e.employee_code)",
+                            "field": "5",
+                            "dataType": {
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 2 records retrieved in 5.019ms"
+                    },
+                    "totalRowCount": 2,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "/* Solved 'New Companies' problem */ \nSELECT \n    c.COMPANY_CODE,\n    c.FOUNDER,\n    COUNT(DISTINCT lm.LEAD_MANAGER_CODE),\n    COUNT(DISTINCT sm.SENIOR_MANAGER_CODE),\n    COUNT(DISTINCT m.MANAGER_CODE),\n    COUNT(DISTINCT e.employee_code)\nFROM\n    company as c\njoin lead_manager AS lm ON c.COMPANY_CODE = lm.company_code\njoin senior_manager as sm on lm.lead_manager_code = sm.lead_manager_code\njoin manager as m on m.senior_manager_code = sm.senior_manager_code\nJOIN employee as e on e.manager_code = m.manager_code\nGROUP BY c.COMPANY_CODE, c.FOUNDER\norder by c.company_code"
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 18,
+                "end": 32,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "2226f63d-ca37-4eb4-b3fc-d9b29b9b4bb4"
+                    ]
+                },
+                "currentHeight": 141.796875,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 489
+                        },
+                        "contentStart": 28,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "777b999e-3497-493d-d97a-4889ab0374b2",
+                    "resultId": "2226f63d-ca37-4eb4-b3fc-d9b29b9b4bb4",
+                    "rows": [
+                        {
+                            "0": "Jenny",
+                            "1": "Ashely",
+                            "2": "Meera",
+                            "3": "Jane"
+                        },
+                        {
+                            "0": "Samantha",
+                            "1": "Christeen",
+                            "2": "Priya",
+                            "3": "Julia"
+                        },
+                        {
+                            "0": null,
+                            "1": "Ketty",
+                            "2": null,
+                            "3": "Maria"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "MAX(CASE WHEN OCCUPATION = 'Doctor' THEN NAME ELSE NULL END)",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17
+                            }
+                        },
+                        {
+                            "title": "MAX(CASE WHEN OCCUPATION = 'Professor' THEN NAME ELSE NULL END)",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17
+                            }
+                        },
+                        {
+                            "title": "MAX(CASE WHEN OCCUPATION = 'Singer' THEN NAME ELSE NULL END)",
+                            "field": "2",
+                            "dataType": {
+                                "type": 17
+                            }
+                        },
+                        {
+                            "title": "MAX(CASE WHEN OCCUPATION = 'Actor' THEN NAME ELSE NULL END)",
+                            "field": "3",
+                            "dataType": {
+                                "type": 17
+                            }
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 3 records retrieved in 0.995ms"
+                    },
+                    "totalRowCount": 3,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "/* 'Occupations' problem */\nSELECT \n    MAX(CASE WHEN OCCUPATION = 'Doctor' THEN NAME ELSE NULL END),\n    MAX(CASE WHEN OCCUPATION = 'Professor' THEN NAME ELSE NULL END),\n    MAX(CASE WHEN OCCUPATION = 'Singer' THEN NAME ELSE NULL END),\n    MAX(CASE WHEN OCCUPATION = 'Actor' THEN NAME ELSE NULL END)\nFROM\n    (\n        SELECT \n            *, \n            ROW_NUMBER()OVER(PARTITION BY OCCUPATION ORDER BY NAME) AS RN \n        FROM\n            OCCUPATIONS\n    ) AS new_tab\nGROUP BY RN"
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 33,
+                "end": 33,
+                "language": "mysql",
+                "currentHeight": 36,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 0
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 34,
+                "end": 34,
+                "language": "mysql",
+                "currentHeight": 180,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 0
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        }
+    ]
+}
