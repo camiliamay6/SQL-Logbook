@@ -1,7 +1,7 @@
 # SQL-Logbook
 This repo is log book for my journey to learn SQL (sorry for my bad english :) )
 
-Update 21/01/2024
+--Update 21/01/2024--
 
 Today i completed 7 problems on Hackerrank, there are [Revising Aggregations - The Count Function](https://www.hackerrank.com/challenges/revising-aggregations-the-count-function), [Revising Aggregations - The Sum Function](https://www.hackerrank.com/challenges/revising-aggregations-sum), [Revising Aggregations - Averages](https://www.hackerrank.com/challenges/revising-aggregations-the-average-function), [Average Population](https://www.hackerrank.com/challenges/average-population), [Japan Population](https://www.hackerrank.com/challenges/japan-population), [Population Density Difference](https://www.hackerrank.com/challenges/population-density-difference), and [The Blunder](https://www.hackerrank.com/challenges/the-blunder). From these problems i learned two new function, which are:
 
